@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Enhancer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rejuvenation.css') }}">
+    
+</head>
+<body>
+    <header>
+        <div class = "parent-container">
+            <div class="shade">
+                <h1>Enhance Your Mood Like Never Before</h1>
+                <p>Discover activities, music, yoga, and games to uplift your mood . . . . . . </p>
+            </div>
+        </div>
+    </header>
+   <main class="cards-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="/static/img/music.jpg" alt="Music">
+            <h3>Mood Enhancing Music</h3>
+            <ul>
+                <li><a href="https://youtu.be/-ZT5g0Ahuvg" target="_blank">Relaxing Music for Stress Relief</a></li>
+                <li><a href="https://youtu.be/ePy6RggAcpE" target="_blank">Peaceful Piano Music</a></li>
+                <li><a href="https://youtu.be/4GnVDPD01as" target="_blank">Ambient Study Music</a></li>
+            </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <img id = "yoga" style="cursor: pointer;" src="/static/img/yoga.jpg" alt="Yoga">
+            <h3>Top Yoga Poses</h3>
+            <ul>
+                <li>Surya Namaskar</li>
+                <li>Shavasana</li>
+                <li>Trikonasana</li>
+            </ul>
+            <a href="https://youtu.be/MxE089zVL-A" target="_blank">Surya namaskar</a>
+            <a href="https://youtu.be/G1j3erpSErE?si=CGgq7dhONoodIBkK" target="_blank">Shavsana</a>
+            <a href="https://youtu.be/149Iac5fmoE?si=PoxD46Uaxhim8cDs" target="_blank">7 best yoga poses for begineers</a>
+            <a href="https://youtu.be/S6gB0QHbWFE?si=A5N5oCVqMEtvmpgk" target="_blank">Trikonasana</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img class = "Excercise"src="/static/img/exercise 2.jpg" alt="Exercises">
+            <h3>Exercises</h3>
+            <ul>
+                <li>Jumping Jacks</li>
+                <li>Push-ups</li>
+                <li>Plank</li>
+            </ul>
+            <a href="https://youtu.be/AzV3EA-1-yM" target="_blank">View Video</a>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <img class = "Games" src="/static/img/games.jpg" alt="Games">
+            <h3>Mood Enhancing Games</h3>
+            <ul>
+                <li>Headspace App</li>
+                <li>Puzzle Games</li>
+                <li>Relaxation Coloring</li>
+            </ul>
+            <a href="https://sudoku.com/" target="_blank">Sudoku special</a>
+            <a href="https://www.crazygames.com/t/brain/3?sorting=new" target="_blank">Explore Games</a>
+            <a href="https://coloring-for-adults.com/stress-relief" target="_blank">Color games</a>
+            
+        </div>
+        <div class="card">
+            <img src="/static/img/natural medicines.jpg" alt="Natural Medicine">
+            <h3>Natural Medicine</h3>
+            
+            <!-- Language Selection Dropdown -->
+            <label for="language">Select Language:</label>
+            <select id="language" onchange="updateMedicineList()">
+                <option value="english">English</option>
+                <option value="tamil">தமிழ் (Tamil)</option>
+                <option value="hindi">हिन्दी (Hindi)</option>
+                <option value="telugu">తెలుగు (Telugu)</option>
+                <option value="malayalam">മലയാളം (Malayalam)</option>
+            </select>
+        
+            <!-- List of Natural Medicines -->
+            <ul id="medicine-list">
+                <!-- Default content will be loaded via JavaScript -->
+            </ul>
+        </div>
+        <div class="card">
+            <img class = "Books"src="/static/img/Books.webp" alt="Books">
+            <h3>Books</h3>
+            <ul>
+                <li>Fiction</li>
+                <li>Motivational</li>
+                <li>spiritual/Mindfulness</li>
+            </ul>
+            <a href="https://youtu.be/e5q5ul8avJg?si=DHxTn8YkOp5HDo1s" target="_blank">View Video</a>
+        </div>
+    </main>
+    <form action="{{ url_for('start_app2') }}" method="get">
+        <button type="submit" class = "custom-button">
+           <bold>Sentence based approach and visualization</bold> 
+        </button>
+    </form>
+    
+    <footer>
+        <p>&copy; 2024 Mood Enhancer. All rights reserved.</p>
+    </footer>
+
+</body>
+<script>
+    // Natural medicine names in different languages
+    const medicineData = {
+        english: ["Chamomile", "Ashwagandha", "Holy Basil", "Lavender", "Valerian Root"],
+        tamil: ["சாமொமில்", "அஸ்வகந்தா", "துளசி", "லாவண்டர்", "வலேரியன் மூலிகை"],
+        hindi: ["कैमोमाइल", "अश्वगंधा", "तुलसी", "लैवेंडर", "वलेरियन जड़"],
+        telugu: ["కామోమైల్", "అశ్వగంధ", "తులసి", "లావెండర్", "వాలేరియన్ రూట్"],
+        malayalam: ["കാമോമൈൽ", "അശ്വഗന്ധ", "തുളസി", "ലവണ്ടർ", "വലേറിയൻ മൂലിക"]
+    };
+
+    // Function to update the natural medicine list based on selected language
+    function updateMedicineList() {
+        const selectedLanguage = document.getElementById("language").value;
+        const medicineList = document.getElementById("medicine-list");
+        
+        // Clear existing items
+        medicineList.innerHTML = "";
+
+        // Add medicines in selected language
+        medicineData[selectedLanguage].forEach(medicine => {
+            const listItem = document.createElement("li");
+            listItem.textContent = medicine;
+            medicineList.appendChild(listItem);
+        });
+    }
+
+    // Load default language (English) on page load
+    window.onload = updateMedicineList;
+</script>
+<script src="sound.js"></script>
+
+</html>
+
+

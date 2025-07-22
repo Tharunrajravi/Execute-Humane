@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Enhancer - Surya Namaskar & Positivity Tips</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/positive_recommendations.css') }}">
+</head>
+<body>
+    <header>
+       
+    </header>
+    
+    <div class="container">
+        <div class="cards-container">
+    
+            <!-- Surya Namaskar Card -->
+            <div class="card">
+                <img src="/static/img/namaskar.webp" alt="Surya Namaskar">
+                <h3>Surya Namaskar Tips</h3>
+                <ul>
+                    <li>Start with a calm mind and focus on your breathing.</li>
+                    <li>Perform each step slowly to enhance flexibility and relieve stress.</li>
+                    <li>Practice daily to improve your mood and reduce anxiety.</li>
+                    <li>Focus on stretching your back, legs, and arms.</li>
+                    <li>Hold each posture for a few breaths to get the full benefits.</li>
+                </ul>
+                <h3>Recommended Videos:</h3>
+                <ul>
+                    <li><a href="https://youtu.be/MxE089zVL-A?si=eWH_4vr7IONVbAcG" target="_blank">Surya Namaskar - Step by Step (Tamil)</a></li>
+                    <li><a href="https://youtu.be/1xRX1MuoImw?si=l9xGpuyL63kqH08g" target="_blank">Beginner Surya Namaskar - Full Guide (English)</a></li>
+                </ul>
+            </div>
+        
+            <!-- Positivity Improvement Card -->
+            <div class="card">
+                <img src="/static/img/positivity2.jpg" alt="Positivity Tips">
+                <h3>Positivity Improvement Tips</h3>
+                <ul>
+                    <li>Practice gratitude daily by listing things you’re thankful for.</li>
+                    <li>Engage in small acts of kindness to boost your mood.</li>
+                    <li>Set achievable goals and celebrate small wins.</li>
+                    <li>Engage in hobbies or activities you enjoy to improve your outlook.</li>
+                    <li>Spend time in nature to refresh and calm your mind.</li>
+                </ul>
+                <h3>Recommended Videos:</h3>
+                <ul>
+                    <li><a href="https://www.youtube.com/playlist?list=PLqY-Kjq7L8ItsgU35RSOk29VJtS1EqyL8" target="_blank">Tips for Positive Mindset (Tamil)</a></li>
+                    <li><a href="https://youtu.be/Tuw8hxrFBH8?si=FrFLcE2m9uPpQeOJ" target="_blank">Positive Thinking - Life-Changing Tips (English)</a></li>
+                </ul>
+            </div>
+            
+        
+        </div>
+        <form action="{{ url_for('start_app2') }}" method="get">
+            <button type="submit" class = "custom-button">
+               <bold>Sentence based approach and visualization</bold> 
+            </button>
+        </form>
+        <footer>
+            <p>&copy; 2024 Mood Enhancer. All rights reserved.</p>
+        </footer>
